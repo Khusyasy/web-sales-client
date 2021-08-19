@@ -1,43 +1,23 @@
 <template>
 <div class="p-grid p-fluid dashboard">
 
-	<div class="p-col-12 p-md-6 p-xl-3">
+	<div class="p-col-12 p-md-6">
 		<div class="highlight-box">
-			<div class="initials" style="background-color: #007be5; color: #00448f"><span>TV</span></div>
+			<div class="initials" style="background-color: #20d077; color: #038d4a"><span>TU</span></div>
 			<div class="highlight-details ">
-				<i class="pi pi-search"></i>
-				<span>Total Queries</span>
-				<span class="count">523</span>
+				<i class="pi pi-user"></i>
+				<span>Total Users</span>
+				<span class="count">{{ usersCount }}</span>
 			</div>
 		</div>
 	</div>
-	<div class="p-col-12 p-md-6 p-xl-3">
+	<div class="p-col-12 p-md-6">
 		<div class="highlight-box">
-			<div class="initials" style="background-color: #ef6262; color: #a83d3b"><span>TI</span></div>
+			<div class="initials" style="background-color: #f9c851; color: #b58c2b"><span>TT</span></div>
 			<div class="highlight-details ">
-				<i class="pi pi-question-circle"></i>
-				<span>Total Issues</span>
-				<span class="count">81</span>
-			</div>
-		</div>
-	</div>
-	<div class="p-col-12 p-md-6 p-xl-3">
-		<div class="highlight-box">
-			<div class="initials" style="background-color: #20d077; color: #038d4a"><span>OI</span></div>
-			<div class="highlight-details ">
-				<i class="pi pi-filter"></i>
-				<span>Open Issues</span>
-				<span class="count">21</span>
-			</div>
-		</div>
-	</div>
-	<div class="p-col-12 p-md-6 p-xl-3">
-		<div class="highlight-box">
-			<div class="initials" style="background-color: #f9c851; color: #b58c2b"><span>CI</span></div>
-			<div class="highlight-details ">
-				<i class="pi pi-check"></i>
-				<span>Closed Issues</span>
-				<span class="count">60</span>
+				<i class="pi pi-shopping-cart"></i>
+				<span>Total Transactions</span>
+				<span class="count">{{ transactionsCount }}</span>
 			</div>
 		</div>
 	</div>
@@ -79,12 +59,19 @@ export default {
 		return {
 			products: null,
 			incomeData: null,
+			usersCount: 0,
+			transactionsCount: 0,
 		}
 	},
 	created() {
 		
 	},
 	mounted() {
+		// get total counts
+		axios.get('/users/count').then(res=>this.usersCount = res.data.count);
+		axios.get('/transactions/count').then(res=>this.transactionsCount = res.data.count);
+
+
 		// get recent transactions data from api
 		axios.get('/transactions').then(res=>this.products = res.data);
 
