@@ -44,20 +44,17 @@
 
 	<div class="p-col-12 p-lg-6">
 		<div class="card">
-			<h1 style="font-size:16px">Recent Transactions</h1>
-			<DataTable :value="products" class="p-datatable-customers" :rows="5" style="margin-bottom: 20px" :paginator="true">
-				<Column field="name" header="Name" :sortable="true"></Column>
-				<Column field="price" header="Price" :sortable="true">
+			<h1 style="font-size:16px">Recent Transactions - Last 50</h1>
+			<DataTable :value="products" class="p-datatable-customers" :rows="5" :paginator="true">
+				<Column field="transactionDate" header="Date" :sortable="true">
 					<template #body="slotProps">
-						{{formatCurrency(slotProps.data.price)}}
+						{{getDateOnly(slotProps.data.transactionDate)}}
 					</template>
 				</Column>
-				<Column>
-					<template #header>
-						View
-					</template>
-					<template #body>
-						<Button icon="pi pi-search" type="button" class="p-button-success p-mr-2 p-mb-1"></Button>
+				<Column field="service" header="Service"></Column>
+				<Column field="total" header="Total" :sortable="true">
+					<template #body="slotProps">
+						{{formatCurrency(slotProps.data.total)}}
 					</template>
 				</Column>
 			</DataTable>
@@ -87,6 +84,9 @@ export default {
 		
 	},
 	mounted() {
+		// get recent transactions data from api
+		axios.get('/transactions').then(res=>this.products = res.data);
+
 		// get income data from api
 		axios.get('/transactions/income').then(res=>{
 			let { total } = res.data;
@@ -113,6 +113,10 @@ export default {
 	methods: {
 		formatCurrency(value) {
 			return value.toLocaleString('en-US', {style: 'currency', currency: 'USD'});
+		},
+		getDateOnly(value) {
+			let date = new Date(value);
+			return date.toDateString();
 		}
 	}
 }
