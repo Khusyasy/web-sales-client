@@ -63,7 +63,8 @@
 
 	<div class="p-col-12 p-lg-6">
 		<div class="card">
-			<Chart type="line" :data="incomeData" />
+			<h1 style="font-size:16px">This Month Income</h1>
+			<Chart type="bar" :data="incomeData" />
 		</div>
 	</div>
 
@@ -95,12 +96,12 @@ export default {
 				label: 'Total Income',
 				data: total.map(t=>t.total),
 				fill: false,
-				backgroundColor: '#2f4860',
-				borderColor: '#2f4860'
+				backgroundColor: '#0065c3',
+				borderColor: '#0065c3'
 			};
 
 			let data = {
-				labels: total.map(t=>t.week),
+				labels: total.map(t=>'Week ' + t.week),
 				datasets: [
 					dataset
 				],
