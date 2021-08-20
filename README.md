@@ -1,34 +1,13 @@
-# sigma
+# CLIENT untuk web-sales
+saya menggunakan `vue` versi `3` serta menggunakan template [sigma-vue](https://github.com/primefaces/sigma-vue) dari UI framework [primevue](https://www.primefaces.org/primevue/), karena saat ini primevue sudah support `vue 3` dan memiliki komponen yang dibutuhkan seperti [DataTable](https://www.primefaces.org/primevue/showcase/#/datatable) untuk menampilkan data dengan table yang sudah lengkap dengan berbagai fitur untuk sorting, pagination dll. dan juga [Chart](https://www.primefaces.org/primevue/showcase/#/chart) untuk menampilkan berbagai jenis Diagram.
 
-## Project setup
-```
-npm install
-```
+dibandingkan dengan beberapa UI framework lainnya seperti, [Vuestic](https://vuestic.dev/en/ui-elements/avatar) yang komponennya masih sedikit. [Oruga UI](https://oruga.io/documentation/) yang masih dalam development untuk support `vue 3`.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Setup
 
-### Run your tests
-```
-npm run test
-```
+`npm install` untuk menginstall.
 
-### Lints and fixes files
-```
-npm run lint
-```
+pastikan API untuk web-sales sudah dijalankan. (di `localhost:3000` karena vue mode development di setting proxy ke `localhost:3000`)
 
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+`npm run serve` untuk menjalankan vue mode development di `localhost:8080`.
