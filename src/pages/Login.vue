@@ -8,12 +8,14 @@
 
 				<div class="p-field">
 					<label for="email">Email</label>
-					<InputText v-model="email" id="email" type="email" />
+					<InputText v-model="email" id="email" type="email" :class="{'p-invalid': error.email}" />
+					<small v-if="error.email" id="username2-help" class="p-error">{{ error.email }}</small>
 				</div>
 
 				<div class="p-field">
 					<label for="password">Password</label>
-					<Password v-model="password" id="password" :feedback="false" />
+					<Password v-model="password" id="password" :feedback="false" :class="{'p-invalid': error.password}" />
+					<small v-if="error.password" id="username2-help" class="p-error">{{ error.password }}</small>
 				</div>
 
 				<div class="p-field">
@@ -34,6 +36,10 @@ export default {
 		return {
 			email: '',
 			password: '',
+			error: {
+				email: '',
+				password: '',
+			},
 		};
 	},
 	mounted() {
@@ -42,14 +48,27 @@ export default {
 		}
 	},
 	methods: {
+		checkInput() {
+			if(!this.email) this.error.email = 'Enter your email';
+			else this.error.email = '';
+
+			if(!this.password) this.error.password = 'Enter your password';
+			else this.error.password = '';
+
+			return this.email && this.password;
+		},
 		login() {
+			if(!this.checkInput()) return;
+
 			axios.post('/users/login', { email: this.email, password: this.password })
 				.then(res=>{
 					console.log(res.data);
 					if(res.data.status === 'success'){
 						this.$router.push('/');
 					}else {
-						console.log(res.data.error);
+						Object.entries(res.data.error).forEach(([key, value])=>{
+							this.error[key] = value;
+						});
 					}
 				});
 		}
