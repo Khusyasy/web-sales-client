@@ -25,7 +25,7 @@
 	<div class="p-col-12 p-lg-6">
 		<div class="card">
 			<h1 style="font-size:16px">Recent Transactions - Last 50</h1>
-			<DataTable :value="products" class="p-datatable-customers" :rows="5" :paginator="true">
+			<DataTable :value="products" class="p-datatable-sm" responsiveLayout="scroll" :rows="5" :paginator="true">
 				<Column field="transactionDate" header="Date" :sortable="true">
 					<template #body="slotProps">
 						{{getDateOnly(slotProps.data.transactionDate)}}
@@ -71,7 +71,6 @@ export default {
 		axios.get('/users/count').then(res=>this.usersCount = res.data.count);
 		axios.get('/transactions/count').then(res=>this.transactionsCount = res.data.count);
 
-
 		// get recent transactions data from api
 		axios.get('/transactions').then(res=>this.products = res.data);
 
@@ -95,7 +94,6 @@ export default {
 			};
 
 			this.incomeData = data;
-			console.log(this.incomeData);
 		});
 	},
 	methods: {
@@ -111,41 +109,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-	@media screen and (max-width: 960px) {
-		::v-deep(.p-datatable) {
-			&.p-datatable-customers {
-				.p-datatable-thead > tr > th,
-				.p-datatable-tfoot > tr > td {
-					display: none !important;
-				}
 
-				.p-datatable-tbody > tr {
-					border-bottom: 1px solid #dee2e6;
-					> td {
-						text-align: left;
-						display: flex;
-						align-items: center;
-						justify-content: center;
-						border: 0 none !important;
-						width: 100% !important;
-						float: left;
-						clear: left;
-						border: 0 none;
-
-						.p-column-title {
-							padding: .4rem;
-							min-width: 30%;
-							display: inline-block;
-							margin: -.4rem 1rem -.4rem -.4rem;
-							font-weight: bold;
-						}
-
-						.p-progressbar {
-							margin-top: .5rem;
-						}
-					}
-				}
-			}
-		}
-	}
 </style>
