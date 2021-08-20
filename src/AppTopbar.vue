@@ -10,6 +10,12 @@
 					<span class="layout-topbar-item-text">User</span>
 				</button>
 			</router-link>
+			<router-link to="/logout">
+				<button class="p-link">
+					<span class="layout-topbar-icon pi pi-power-off"></span>
+					<span class="layout-topbar-item-text">Logout</span>
+				</button>
+			</router-link>
 		</div>
 	</div>
 </template>
