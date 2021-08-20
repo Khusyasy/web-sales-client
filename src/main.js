@@ -99,10 +99,13 @@ const app = createApp(App);
 
 app.config.globalProperties.$appState = reactive({ inputStyle: 'outlined' });
 
+import VueCookies from 'vue3-cookies';
+
 app.use(PrimeVue, { ripple: true });
 app.use(ConfirmationService);
 app.use(ToastService);
 app.use(router);
+app.use(VueCookies);
 
 app.directive('tooltip', Tooltip);
 app.directive('ripple', Ripple);

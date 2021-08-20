@@ -47,6 +47,9 @@ export default {
     },
     watch: {
         $route() {
+            if(!this.$cookies.isKey('token')) {
+                this.$router.push('/login');
+            }
             this.menuActive = false;
             this.$toast.removeAllGroups();
         }

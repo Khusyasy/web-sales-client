@@ -8,9 +8,9 @@ const routes = [
         component: Dashboard,
     },
     {
-        path: '/chart',
-        name: 'chart',
-        component: () => import('./components/ChartDemo.vue'),
+        path: '/login',
+        name: 'login',
+        component: () => import('./pages/Login.vue'),
     },
 ];
 
