@@ -8,6 +8,6 @@ dibandingkan dengan beberapa UI framework lainnya seperti, [Vuestic](https://vue
 
 `npm install` untuk menginstall.
 
-pastikan API untuk web-sales sudah dijalankan. (di `localhost:3000` karena vue mode development di setting proxy ke `localhost:3000`)
+pastikan [API](https://github.com/Khusyasy/web-sales-api) sudah dijalankan. (di `localhost:3000` karena vue mode development di setting proxy ke `localhost:3000`)
 
 `npm run serve` untuk menjalankan vue mode development di `localhost:8080`.
