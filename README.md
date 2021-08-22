@@ -3,16 +3,23 @@ saya menggunakan `vue` versi `3` serta menggunakan template [sigma-vue](https://
 
 dibandingkan dengan beberapa UI framework lainnya seperti, [Vuestic](https://vuestic.dev/en/ui-elements/avatar) yang komponennya masih sedikit. [Oruga UI](https://oruga.io/documentation/) yang masih dalam development untuk support `vue 3`.
 
-
 ## Setup
+node version `v14.17.0`
 
-`npm install` untuk menginstall.
+### Instalasi package
+```bash
+npm install
+```
 
-pastikan [API](https://github.com/Khusyasy/web-sales-api) sudah dijalankan. (`localhost:3000`)
+### Menjalankan app vue
+sebelumnya pastikan [server API](https://github.com/Khusyasy/web-sales-api) sudah berjalan.
+app vue akan berjalan di port `8080` (`localhost:8080`)
+```bash
+npm run serve
+```
 
-`npm run serve` untuk menjalankan vue mode development di `localhost:8080`.
-
-data login jika menggunakan data dummy dari [API](https://github.com/Khusyasy/web-sales-api).
+### Login
+data login dummy.
 |     |     |
 | --- | --- |
 | email | `admin@admin.com` |
