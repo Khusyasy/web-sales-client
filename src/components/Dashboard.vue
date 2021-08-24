@@ -48,13 +48,43 @@
 		</div>
 	</div>
 
+	<div class="p-col-12 p-lg-6">
+		<div class="card">
+			<h1 style="font-size:16px">Current Marketplace</h1>
+			<l-map :zoom="15" :center="[-6.154355625032956, 106.75073107505914]" style="height:50vh">
+
+				<l-tile-layer
+					url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+					layer-type="base"
+					name="OpenStreetMap"
+					:max-zoom="18"
+				/>
+				
+				<l-marker :lat-lng="[-6.154355625032956, 106.75073107505914]">
+					<l-tooltip>
+						Hello!, this is where our only physical marketplace exist!
+					</l-tooltip>
+				</l-marker>
+
+			</l-map>
+		</div>
+	</div>
+
 </div>
 </template>
 
 <script>
 import axios from 'axios';
+import "leaflet/dist/leaflet.css"
+import { LMap, LTileLayer, LMarker, LTooltip } from "@vue-leaflet/vue-leaflet";
 
 export default {
+	components: {
+    LMap,
+    LTileLayer,
+		LMarker,
+		LTooltip,
+  },
 	data() {
 		return {
 			products: null,
@@ -63,9 +93,9 @@ export default {
 			transactionsCount: 0,
 		}
 	},
-	created() {
+  async beforeMount() {
 		
-	},
+  },
 	mounted() {
 		// get total counts
 		axios.get('/users/count').then(res=>this.usersCount = res.data.count);
@@ -104,7 +134,7 @@ export default {
 			let date = new Date(value);
 			return date.toDateString();
 		}
-	}
+	},
 }
 </script>
 
