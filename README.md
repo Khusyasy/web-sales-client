@@ -3,6 +3,8 @@ saya menggunakan `vue` versi `3` serta menggunakan template [sigma-vue](https://
 
 dibandingkan dengan beberapa UI framework lainnya seperti, [Vuestic](https://vuestic.dev/en/ui-elements/avatar) yang komponennya masih sedikit. [Oruga UI](https://oruga.io/documentation/) yang masih dalam development untuk support `vue 3`.
 
+untuk maps menggunakan library [leaflet](https://leafletjs.com/), agar bisa digunakan dengan `vue 3` saya memakai component [vue-leaflet](https://github.com/vue-leaflet/vue-leaflet).
+
 ## Setup
 node version `v14.17.0`
 
